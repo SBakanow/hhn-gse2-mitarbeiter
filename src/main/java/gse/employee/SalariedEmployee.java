@@ -17,7 +17,7 @@ public class SalariedEmployee extends Employee {
                           int weeklyWorkingTime) {
     super(surname, forename);
     if (monthlySalary >= 0 && overtimeRate >= 0 && overtimeRate <= 1
-        && weeklyWorkingTime >= 0 && weeklyWorkingTime <= 48) {
+        && weeklyWorkingTime >= 35 && weeklyWorkingTime <= 48) {
       this.monthlySalary = monthlySalary;
       this.overtimeRate = overtimeRate;
       this.weeklyWorkingTime = weeklyWorkingTime;
