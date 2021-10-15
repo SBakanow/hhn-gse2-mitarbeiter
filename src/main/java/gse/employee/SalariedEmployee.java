@@ -13,9 +13,9 @@ public class SalariedEmployee extends Employee {
 
   private int weeklyWorkingTime;
 
-  public SalariedEmployee(String surname, String forename, float monthlySalary, float overtimeRate,
+  public SalariedEmployee(String forename, String surname, float monthlySalary, float overtimeRate,
                           int weeklyWorkingTime) {
-    super(surname, forename);
+    super(forename, surname);
     if (monthlySalary >= 0 && overtimeRate >= 0 && overtimeRate <= 1
         && weeklyWorkingTime >= 35 && weeklyWorkingTime <= 48) {
       this.monthlySalary = monthlySalary;
