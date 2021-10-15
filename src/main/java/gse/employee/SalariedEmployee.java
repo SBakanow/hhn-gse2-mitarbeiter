@@ -13,9 +13,9 @@ public class SalariedEmployee extends Employee {
 
   private int weeklyWorkingTime;
 
-  public SalariedEmployee(String name, String surname, float monthlySalary, float overtimeRate,
+  public SalariedEmployee(String surname, String forename, float monthlySalary, float overtimeRate,
                           int weeklyWorkingTime) {
-    super(name, surname);
+    super(surname, forename);
     if (monthlySalary >= 0 && overtimeRate >= 0 && overtimeRate <= 1
         && weeklyWorkingTime >= 0 && weeklyWorkingTime <= 48) {
       this.monthlySalary = monthlySalary;
@@ -24,24 +24,47 @@ public class SalariedEmployee extends Employee {
     }
   }
 
-  // start of getter
+  /**
+   * Returns the monthly salary.
+   *
+   * @return monthlySalary Returns the monthly salary.
+   */
   public float getMonthlySalary() {
     return monthlySalary;
   }
 
+  /**
+   * Returns the overtime rate.
+   *
+   * @return overtimeRate Returns the overtime rate.
+   */
   public float getOvertimeRate() {
     return overtimeRate;
   }
 
+  /**
+   * Returns the overtime hours worked this month.
+   *
+   * @return hoursWorkedOvertime Returns the overtime hours worked this month.
+   */
   public int getHoursWorkedOvertime() {
     return hoursWorkedOvertime;
   }
 
+  /**
+   * Returns the weekly working time.
+   *
+   * @return weeklyWorkingTime Returns the weekly working time.
+   */
   public int getWeeklyWorkingTime() {
     return weeklyWorkingTime;
   }
 
-  // start of setter
+  /**
+   * Sets the hours worked overtime this month.
+   *
+   * @param hoursWorkedOvertime The hours worked overtime.
+   */
   public void setHoursWorkedOvertime(int hoursWorkedOvertime) {
     this.hoursWorkedOvertime = hoursWorkedOvertime;
   }
