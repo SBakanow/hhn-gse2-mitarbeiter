@@ -79,6 +79,7 @@ public class SalariedEmployee extends Employee {
     float hourlySalary = (float) (monthlySalary / (weeklyWorkingTime * 4.33));
     float salary =
         monthlySalary + ((hourlySalary + (hourlySalary * overtimeRate)) * hoursWorkedOvertime);
+    salary = (float) (Math.round(salary * 100.0) / 100.0);
     yearlySalaryToThisDate += salary;
     return salary;
   }

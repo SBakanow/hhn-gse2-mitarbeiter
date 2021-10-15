@@ -17,19 +17,22 @@ public abstract class Employee {
    * @param args Command Line Arguments
    */
   public static void main(String[] args) {
-    SalariedEmployee sergej = new SalariedEmployee("Sergej", "Bakanov", 3550, 0.5f, 35);
+    SalariedEmployee sergej = new SalariedEmployee("Sergej", "Bakanow", 3550, 0.5f, 35);
     System.out.println(sergej);
-    sergej.setHoursWorkedOvertime(50);
-    System.out.println(sergej.calculateSalary());
+    for (int i = 0; i < 12; i++) {
+      sergej.setHoursWorkedOvertime((int) Math.round(i * 2.1));
+      System.out.println("Month " + (i+1) + ". " + sergej.calculateSalary());
+    }
+    System.out.println("Yearly Salary: " + sergej.getYearlySalaryToThisDate());
   }
 
   public Employee(String forename, String surname) {
-    if (forename != null || !forename.isBlank()) {
+    if (forename != null && !forename.isBlank()) {
       this.forename = forename;
     } else {
       this.forename = "Jane";
     }
-    if (forename != null || !forename.isBlank()) {
+    if (surname != null && !surname.isBlank()) {
       this.surname = surname;
     } else {
       this.surname = "Doe";
@@ -65,7 +68,7 @@ public abstract class Employee {
 
   @Override
   public String toString() {
-    return forename + " " + surname;
+    return getClass().getSimpleName() + " " + forename + " " + surname;
   }
 
   public abstract float calculateSalary();
