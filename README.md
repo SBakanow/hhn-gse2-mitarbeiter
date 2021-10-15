@@ -5,4 +5,4 @@ GSE Project Mitarbeiter
 * Mitarbeiter   (Marvin)
 * At_Mitarbeiter
 * Zeitarbeiter (Noah)
-* Tarifarbeiter
+* Angestellter  (Sergej)
