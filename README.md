@@ -2,7 +2,9 @@
 
 GSE Project Mitarbeiter
 
-* Mitarbeiter   (Marvin)
-* At_Mitarbeiter
-* Zeitarbeiter (Noah)
-* Angestellter  (Sergej)
+* employee  (Marvin)
+* non-tarif employee 
+* temporary worker (Noah)
+* salaried employee (Sergej)
+
+Schaut mal nach ob das richtige Übersetzungen sind.
