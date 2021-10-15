@@ -74,6 +74,7 @@ public class SalariedEmployee extends Employee {
    *
    * @return salary The monthly salary.
    */
+  @Override
   public float calculateSalary() {
     float hourlySalary = (float) (monthlySalary / (weeklyWorkingTime * 4.33));
     float salary =

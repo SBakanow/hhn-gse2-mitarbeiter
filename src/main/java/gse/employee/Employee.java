@@ -1,22 +1,44 @@
 package gse.employee;
 
+/**
+ * Abstract Employee class.
+ *
+ * @author Marvin Simon
+ */
 public abstract class Employee {
 
   protected String surname;
   protected String forename;
   protected float yearlySalaryToThisDate;
 
+  /**
+   * Main method of the program.
+   *
+   * @param args Command Line Arguments
+   */
   public static void main(String[] args) {
-
+    SalariedEmployee sergej = new SalariedEmployee("Sergej", "Bakanov", 3550, 0.5f, 35);
+    System.out.println(sergej);
+    sergej.setHoursWorkedOvertime(50);
+    System.out.println(sergej.calculateSalary());
   }
 
-  public Employee(String surname, String forename) {
-    this.surname = surname;
-    this.forename = forename;
+  public Employee(String forename, String surname) {
+    if (forename != null || !forename.isBlank()) {
+      this.forename = forename;
+    } else {
+      this.forename = "Jane";
+    }
+    if (forename != null || !forename.isBlank()) {
+      this.surname = surname;
+    } else {
+      this.surname = "Doe";
+    }
   }
 
   /**
    * Getter for the forename.
+   *
    * @return Forename of the employee
    */
   public String getForename() {
@@ -25,6 +47,7 @@ public abstract class Employee {
 
   /**
    * Getter SummedUpSalary.
+   *
    * @return Summed up salary to this day
    */
   public float getYearlySalaryToThisDate() {
@@ -33,6 +56,7 @@ public abstract class Employee {
 
   /**
    * Getter for the surname.
+   *
    * @return Surname of the employee
    */
   public String getSurname() {
