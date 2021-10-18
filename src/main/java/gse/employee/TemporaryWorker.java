@@ -1,28 +1,28 @@
 package gse.employee;
 
 /**
- * This class represents a "Zeitarbeiter".
+ * This class represents a temporary Worker.
  *
  * @author Noah Schmidt
  */
 public class TemporaryWorker extends Employee {
 
-  private final float monthlySalary;
+  private final float hourlyWage;
   private int hoursWorked;
 
-  public TemporaryWorker(String forename, String surname, float monthlySalary) {
+  public TemporaryWorker(String forename, String surname, float hourlyWage) {
     super(forename, surname);
-    this.monthlySalary = monthlySalary;
+    this.hourlyWage = hourlyWage;
     this.hoursWorked = 0;
   }
 
   /**
-   * Return the fixed monthly salary.
+   * Return the fixed wage per hour.
    *
-   * @return Salary determined by the employment contract.
+   * @return Wage per hour.
    */
-  public float getMonthlySalary() {
-    return monthlySalary;
+  public float getHourlyWage() {
+    return hourlyWage;
   }
 
   /**
@@ -43,7 +43,6 @@ public class TemporaryWorker extends Employee {
     this.hoursWorked = hoursWorked;
   }
 
-
   /**
    * Calculates the salary for this month.
    *
@@ -51,6 +50,6 @@ public class TemporaryWorker extends Employee {
    */
   @Override
   public float calculateSalary() {
-    return monthlySalary * hoursWorked;
+    return hourlyWage * hoursWorked;
   }
 }

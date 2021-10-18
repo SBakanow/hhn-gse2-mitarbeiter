@@ -3,7 +3,7 @@
 GSE Project Mitarbeiter
 
 * employee  (Marvin)
-* non-tarif employee 
+* non-tarif employee (Dennis)
 * temporary worker (Noah)
 * salaried employee (Sergej)
 
