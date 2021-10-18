@@ -1,8 +1,5 @@
 package gse.employee;
 
-
-import java.util.Date;
-
 /**
  * Extends Employee class
  *
@@ -11,25 +8,25 @@ import java.util.Date;
 
 public class NonTariffEmployee extends Employee {
 
-  private final float monthlySalary;
-  private Date date;
+  private float monthlySalary;
 
 
   public NonTariffEmployee(String forename, String surname, float monthlySalary) {
     super(forename, surname);
-    this.monthlySalary = monthlySalary;
-    Date date = new Date();
-
+    if(monthlySalary >= 1) {
+      this.monthlySalary = monthlySalary;
+    } else {
+      throw new NullPointerException("Value must be greater than 0");
+    }
   }
 
   public float getMonthlySalary() {
     return monthlySalary;
   }
 
-  //TODO
   @Override
   public float calculateSalary() {
-    yearlySalaryToThisDate = monthlySalary * (date.getMonth() + 1);
+    monthlySalary = calculateMonth(monthlySalary);
     return monthlySalary;
   }
 }

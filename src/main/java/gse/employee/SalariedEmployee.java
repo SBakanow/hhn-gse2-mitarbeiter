@@ -17,17 +17,20 @@ public class SalariedEmployee extends Employee {
                           int weeklyWorkingTime) {
     super(forename, surname);
     if (monthlySalary >= 0 && overtimeRate >= 0 && overtimeRate <= 1
-        && weeklyWorkingTime >= 35 && weeklyWorkingTime <= 48) {
+        && weeklyWorkingTime >= 1 && weeklyWorkingTime <= 48) {
       this.monthlySalary = monthlySalary;
       this.overtimeRate = overtimeRate;
       this.weeklyWorkingTime = weeklyWorkingTime;
+    }
+    else {
+      throw new NullPointerException("Some values were not in accordance with the law.");
     }
   }
 
   /**
    * Returns the monthly salary.
    *
-   * @return monthlySalary Returns the monthly salary.
+   * @return Returns the monthly salary.
    */
   public float getMonthlySalary() {
     return monthlySalary;
@@ -36,7 +39,7 @@ public class SalariedEmployee extends Employee {
   /**
    * Returns the overtime rate.
    *
-   * @return overtimeRate Returns the overtime rate.
+   * @return Returns the overtime rate.
    */
   public float getOvertimeRate() {
     return overtimeRate;
@@ -45,7 +48,7 @@ public class SalariedEmployee extends Employee {
   /**
    * Returns the overtime hours worked this month.
    *
-   * @return hoursWorkedOvertime Returns the overtime hours worked this month.
+   * @return Returns the overtime hours worked this month.
    */
   public int getHoursWorkedOvertime() {
     return hoursWorkedOvertime;
@@ -54,7 +57,7 @@ public class SalariedEmployee extends Employee {
   /**
    * Returns the weekly working time.
    *
-   * @return weeklyWorkingTime Returns the weekly working time.
+   * @return Returns the weekly working time.
    */
   public int getWeeklyWorkingTime() {
     return weeklyWorkingTime;
@@ -76,11 +79,11 @@ public class SalariedEmployee extends Employee {
    */
   @Override
   public float calculateSalary() {
-    float hourlySalary = (float) (monthlySalary / (weeklyWorkingTime * 4.33));
+    float hourlySalary = (monthlySalary / (weeklyWorkingTime * 4.33f));
     float salary =
         monthlySalary + ((hourlySalary + (hourlySalary * overtimeRate)) * hoursWorkedOvertime);
-    salary = (float) (Math.round(salary * 100.0) / 100.0);
-    yearlySalaryToThisDate += salary;
+    salary = calculateMonth(salary);
+    hoursWorkedOvertime = 0;
     return salary;
   }
 }

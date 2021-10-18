@@ -12,7 +12,9 @@ public class TemporaryWorker extends Employee {
 
   public TemporaryWorker(String forename, String surname, float hourlyWage) {
     super(forename, surname);
-    this.hourlyWage = hourlyWage;
+
+    //Minimal wage Germany
+    this.hourlyWage = Math.max(hourlyWage, 9.60f);
     this.hoursWorked = 0;
   }
 
@@ -50,6 +52,9 @@ public class TemporaryWorker extends Employee {
    */
   @Override
   public float calculateSalary() {
-    return hourlyWage * hoursWorked;
+    float result = hourlyWage * hoursWorked;
+    result = calculateMonth(result);
+    hoursWorked = 0;
+    return result;
   }
 }
