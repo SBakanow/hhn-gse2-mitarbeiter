@@ -1,7 +1,6 @@
 package gse.employee;
 
 
-import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -26,7 +25,8 @@ public class NonTariffEmployee extends Employee {
   public float getMonthlySalary() {
     return monthlySalary;
   }
-//TODO
+
+  //TODO
   @Override
   public float calculateSalary() {
     yearlySalaryToThisDate = monthlySalary * (date.getMonth() + 1);
