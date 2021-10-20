@@ -5,7 +5,7 @@ package gse.employee;
  *
  * @author Sergej Bakanow
  */
-public class SalariedEmployee implements Employee {
+public class SalariedEmployee implements IEmployee, ITaxpayer {
 
   private float monthlySalary;
   private float overtimeRate;
@@ -16,6 +16,7 @@ public class SalariedEmployee implements Employee {
   private String forename;
   private float yearlySalaryToThisDate;
   private float hourlySalary;
+  private float INCOMETAXRATE = 0.36f;
 
   private int monthCounter;
 
@@ -178,5 +179,13 @@ public class SalariedEmployee implements Employee {
       monthCounter = 0;
     }
     return result;
+  }
+
+  public float actualIncomeTax() {
+    return yearlySalaryToThisDate * INCOMETAXRATE;
+  }
+
+  public float anticipatedIncomeTax() {
+    return 0;
   }
 }
