@@ -201,7 +201,9 @@ public class SalariedEmployee implements IEmployee, ITaxpayer {
   }
 
   public float anticipatedIncomeTax() {
-    return 0;
+    int restMonth = 12 - monthCounter;
+    float averageIncomePerMonth = yearlySalaryToThisDate / monthCounter;
+    return averageIncomePerMonth * restMonth * INCOME_TAX_RATE;
   }
 
   @Override
