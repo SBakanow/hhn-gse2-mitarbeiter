@@ -16,9 +16,10 @@ public class SalariedEmployee implements IEmployee, ITaxpayer {
   private String forename;
   private float yearlySalaryToThisDate;
   private float hourlySalary;
-  private float INCOMETAXRATE = 0.36f;
+  private final float INCOMETAXRATE = 0.36f;
+  private ContractTypeT contract;
 
-  private int monthCounter;
+  private int monthCounter = 0;
 
   /**
    * constructor of the SalariedEmployee class.
@@ -41,7 +42,7 @@ public class SalariedEmployee implements IEmployee, ITaxpayer {
       this.surname = "Doe";
     }
     calculateHourlySalary(monthlySalary);
-    if (hourlySalary >= 9.60 && overtimeRate >= 0 && overtimeRate <= 1) {
+    if (hourlySalary >= MINIMUMWAGE && overtimeRate >= 0 && overtimeRate <= 1) {
       this.monthlySalary = monthlySalary;
       this.overtimeRate = overtimeRate;
     } else {
@@ -187,5 +188,14 @@ public class SalariedEmployee implements IEmployee, ITaxpayer {
 
   public float anticipatedIncomeTax() {
     return 0;
+  }
+
+  public void setContract(contractTypeT contractType) {
+
+  }
+
+  @Override
+  public String toString() {
+    return getClass().getSimpleName() + " " + forename + " " + surname + " " + contract;
   }
 }
