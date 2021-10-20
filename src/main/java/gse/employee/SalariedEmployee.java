@@ -19,7 +19,7 @@ public class SalariedEmployee implements IEmployee, ITaxpayer {
 
   private float hourlySalary;
 
-  private ContractTypeT contract = ContractTypeT.Tariff;
+  private ContractTypeT contract;
 
   // current month, starting in January
   private Month currentMonth = Month.JANUARY;
@@ -136,15 +136,6 @@ public class SalariedEmployee implements IEmployee, ITaxpayer {
    */
   public void setHoursWorkedOvertime(int hoursWorkedOvertime) {
     this.hoursWorkedOvertime = hoursWorkedOvertime;
-  }
-
-  /**
-   * Sets the contract type for the worker.
-   *
-   * @param contractType the contract type.
-   */
-  public void setContract(ContractTypeT contractType) {
-
   }
 
   /**
