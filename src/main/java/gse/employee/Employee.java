@@ -8,7 +8,7 @@ package gse.employee;
 public abstract class Employee implements IEmployee {
 
   public Employee(String forename, String surname) {
-    if (forename != null && !forename.isBlank()) {
+    /*if (forename != null && !forename.isBlank()) {
       this.forename = forename;
     } else {
       this.forename = "Jane";
@@ -17,12 +17,12 @@ public abstract class Employee implements IEmployee {
       this.surname = surname;
     } else {
       this.surname = "Doe";
-    }
+    }*/
   }
 
   @Override
   public String toString() {
-    return getClass().getSimpleName() + " " + forename + " " + surname;
+    return "";//getClass().getSimpleName() + " " + forename + " " + surname;
   }
 
 }

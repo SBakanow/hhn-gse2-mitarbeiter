@@ -1,7 +1,12 @@
 package gse.employee;
 
+/**
+ * @author Marvin Simon
+ */
 public interface IEmployee {
-  final float MINIMUMWAGE = 9.50f;
+
+  float MINIMUM_WAGE = 9.60f; //Since the 1. July (+10cent... wow)
+  int WEEKLY_WORKING_TIME = 160; //Hours (4 Weeks x 40h)
 
   /**
    * Getter for the forename.
@@ -32,12 +37,19 @@ public interface IEmployee {
   String getSurname();
 
   /**
-   * Method to reset the salary.
-   * Implemented as protected as no other person is allowed to call it.
+   * Method to reset the salary and round the number.
+   * The rounding formula is Math.round(monthlySalary * 100) / 100
+   * 2,5551 * 100 = 255,51
+   * Math.round(255,51) = 256 / 100 = 2,56
    *
    * @param monthlySalary Monthly Salary that gets added.
    */
   float calculateMonth(float monthlySalary);
 
+  /**
+   * Method to calculate the salary.
+   *
+   * @return The calculated salary
+   */
   float calculateSalary();
 }

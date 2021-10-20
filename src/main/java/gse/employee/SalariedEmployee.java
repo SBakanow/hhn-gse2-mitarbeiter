@@ -19,6 +19,7 @@ public class SalariedEmployee implements IEmployee, ITaxpayer {
   private int monthCounter = 0;
 
   private float hourlySalary;
+
   private ContractTypeT contract;
 
   // current month, starting in January
@@ -45,7 +46,7 @@ public class SalariedEmployee implements IEmployee, ITaxpayer {
       this.surname = "Doe";
     }
     calculateHourlySalary(monthlySalary);
-    if (hourlySalary >= MINIMUMWAGE && overtimeRate >= 0 && overtimeRate <= 1) {
+    if (hourlySalary >= MINIMUM_WAGE && overtimeRate >= 0 && overtimeRate <= 1) {
       this.monthlySalary = monthlySalary;
       this.overtimeRate = overtimeRate;
     } else {
@@ -152,7 +153,7 @@ public class SalariedEmployee implements IEmployee, ITaxpayer {
    *
    * @param contractType the contract type.
    */
-  public void setContract(contractTypeT contractType) {
+  public void setContract(ContractTypeT contractType) {
 
   }
 
@@ -162,7 +163,7 @@ public class SalariedEmployee implements IEmployee, ITaxpayer {
    * @param monthlySalary the monthly salary of the worker.
    */
   public void calculateHourlySalary(float monthlySalary) {
-    hourlySalary = (monthlySalary / (WEEKLYWORKINGTIME * 4));
+    hourlySalary = (monthlySalary / (WEEKLY_WORKING_TIME * 4));
   }
 
   /**
@@ -172,7 +173,7 @@ public class SalariedEmployee implements IEmployee, ITaxpayer {
    */
   @Override
   public float calculateSalary() {
-    float hourlySalary = (monthlySalary / (WEEKLYWORKINGTIME * 4.33f));
+    float hourlySalary = (monthlySalary / (WEEKLY_WORKING_TIME * 4.33f));
     float salary =
         monthlySalary + ((hourlySalary + (hourlySalary * overtimeRate)) * hoursWorkedOvertime);
     salary = calculateMonth(salary);

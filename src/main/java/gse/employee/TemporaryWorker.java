@@ -5,14 +5,12 @@ package gse.employee;
  *
  * @author Noah Schmidt
  */
-public class TemporaryWorker extends Employee {
+public class TemporaryWorker implements IEmployee, ITaxpayer {
 
   private final float hourlyWage;
   private int hoursWorked;
 
   public TemporaryWorker(String forename, String surname, float hourlyWage) {
-    super(forename, surname);
-
     //Minimal wage Germany
     this.hourlyWage = Math.max(hourlyWage, 9.60f);
     this.hoursWorked = 0;
@@ -45,6 +43,31 @@ public class TemporaryWorker extends Employee {
     this.hoursWorked = hoursWorked;
   }
 
+  @Override
+  public String getForename() {
+    return null;
+  }
+
+  @Override
+  public int getMonthCounter() {
+    return 0;
+  }
+
+  @Override
+  public float getYearlySalaryToThisDate() {
+    return 0;
+  }
+
+  @Override
+  public String getSurname() {
+    return null;
+  }
+
+  @Override
+  public float calculateMonth(float monthlySalary) {
+    return 0;
+  }
+
   /**
    * Calculates the salary for this month.
    *
@@ -56,5 +79,15 @@ public class TemporaryWorker extends Employee {
     result = calculateMonth(result);
     hoursWorked = 0;
     return result;
+  }
+
+  @Override
+  public float actualIncomeTax() {
+    return 0;
+  }
+
+  @Override
+  public float anticipatedIncomeTax() {
+    return 0;
   }
 }
