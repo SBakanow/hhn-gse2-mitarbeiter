@@ -52,6 +52,7 @@ public class SalariedEmployee implements IEmployee, ITaxpayer {
     } else {
       throw new IllegalArgumentException("Some values were not in accordance with the law.");
     }
+    contract = ContractTypeT.Tariff;
   }
 
   /**

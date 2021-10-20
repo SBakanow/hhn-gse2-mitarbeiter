@@ -8,9 +8,9 @@ public class Main {
    * @param args Command Line Arguments
    */
   public static void main(String[] args) {
-    try {
       IEmployee sergej = new SalariedEmployee("Sergej", "Bakanow", 3550, 0.5f);
-      TemporaryWorker noah = new TemporaryWorker("Noah", "Schmidt", 9.60f);
+      System.out.println(sergej);
+      /*TemporaryWorker noah = new TemporaryWorker("Noah", "Schmidt", 9.60f);
       NonTariffEmployee dennis = new NonTariffEmployee("Dennis", "Schneider", 10000.0f);
 
       System.out.println("********************");
@@ -44,6 +44,6 @@ public class Main {
       System.out.println("********************");
     } catch (NullPointerException ex) {
       ex.printStackTrace();
-    }
+    }*/
   }
 }

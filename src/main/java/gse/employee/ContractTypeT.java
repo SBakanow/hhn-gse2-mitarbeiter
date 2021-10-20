@@ -1,7 +1,21 @@
 package gse.employee;
 
 public enum ContractTypeT {
-  TimeDependentContract,
-  TariffContract,
-  NonTariffContract,
+  TimeDependent("Time Contract"),
+  Tariff("Tariff Contract"),
+  NonTariff("Non Tariff Contract");
+
+  private String contractName;
+
+  ContractTypeT(String contractName) {
+    this.contractName = contractName;
+  }
+
+  public String getContractName() {
+    return contractName;
+  }
+
+  public String toString() {
+    return contractName;
+  }
 }
