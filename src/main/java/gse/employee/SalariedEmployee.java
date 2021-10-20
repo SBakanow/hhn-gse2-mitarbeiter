@@ -10,16 +10,15 @@ public class SalariedEmployee implements IEmployee, ITaxpayer {
   private float monthlySalary;
   private float overtimeRate;
   private int hoursWorkedOvertime;
-  private final int WEEKLYWORKINGTIME = 40;
 
   private String surname;
   private String forename;
   private float yearlySalaryToThisDate;
+  private int monthCounter = 0;
+
   private float hourlySalary;
-  private final float INCOMETAXRATE = 0.36f;
   private ContractTypeT contract;
 
-  private int monthCounter = 0;
 
   /**
    * constructor of the SalariedEmployee class.
@@ -78,12 +77,57 @@ public class SalariedEmployee implements IEmployee, ITaxpayer {
   }
 
   /**
-   * Returns the weekly working time.
+   * Getter for the surname.
    *
-   * @return Returns the weekly working time.
+   * @return Surname of the employee
    */
-  public int getWEEKLYWORKINGTIME() {
-    return WEEKLYWORKINGTIME;
+  public String getSurname() {
+    return surname;
+  }
+
+  /**
+   * Getter for the forename.
+   *
+   * @return Forename of the employee
+   */
+  public String getForename() {
+    return forename;
+  }
+
+  /**
+   * Getter SummedUpSalary.
+   *
+   * @return Summed up salary to this day
+   */
+  public float getYearlySalaryToThisDate() {
+    return yearlySalaryToThisDate;
+  }
+
+  /**
+   * Get the Month Counter.
+   *
+   * @return Month Counter
+   */
+  public int getMonthCounter() {
+    return monthCounter;
+  }
+
+  /**
+   * Returns the hourly salary of the worker.
+   *
+   * @return the hourly salary of the worker.
+   */
+  public float getHourlySalary() {
+    return hourlySalary;
+  }
+
+  /**
+   * Returns the contract of the worker.
+   *
+   * @return the contract of the worker.
+   */
+  public ContractTypeT getContract() {
+    return contract;
   }
 
   /**
@@ -93,6 +137,24 @@ public class SalariedEmployee implements IEmployee, ITaxpayer {
    */
   public void setHoursWorkedOvertime(int hoursWorkedOvertime) {
     this.hoursWorkedOvertime = hoursWorkedOvertime;
+  }
+
+  /**
+   * Sets the contract type for the worker.
+   *
+   * @param contractType the contract type.
+   */
+  public void setContract(contractTypeT contractType) {
+
+  }
+
+  /**
+   * Calculates the hourly salary with the given monthly salary.
+   *
+   * @param monthlySalary the monthly salary of the worker.
+   */
+  public void calculateHourlySalary(float monthlySalary) {
+    hourlySalary = (monthlySalary / (WEEKLYWORKINGTIME * 4));
   }
 
   /**
@@ -108,60 +170,6 @@ public class SalariedEmployee implements IEmployee, ITaxpayer {
     salary = calculateMonth(salary);
     hoursWorkedOvertime = 0;
     return salary;
-  }
-
-  /**
-   * Returns the hourly salary of the worker.
-   *
-   * @return the hourly salary of the worker.
-   */
-  public float getHourlySalary() {
-    return hourlySalary;
-  }
-
-  /**
-   * Calculates the hourly salary with the given monthly salary.
-   *
-   * @param monthlySalary the monthly salary of the worker.
-   */
-  public void calculateHourlySalary(float monthlySalary) {
-    hourlySalary = (monthlySalary / (WEEKLYWORKINGTIME * 4f));
-  }
-
-  /**
-   * Getter for the forename.
-   *
-   * @return Forename of the employee
-   */
-  public String getForename() {
-    return forename;
-  }
-
-  /**
-   * Get the Month Counter.
-   *
-   * @return Month Counter
-   */
-  public int getMonthCounter() {
-    return monthCounter;
-  }
-
-  /**
-   * Getter SummedUpSalary.
-   *
-   * @return Summed up salary to this day
-   */
-  public float getYearlySalaryToThisDate() {
-    return yearlySalaryToThisDate;
-  }
-
-  /**
-   * Getter for the surname.
-   *
-   * @return Surname of the employee
-   */
-  public String getSurname() {
-    return surname;
   }
 
   /**
@@ -188,10 +196,6 @@ public class SalariedEmployee implements IEmployee, ITaxpayer {
 
   public float anticipatedIncomeTax() {
     return 0;
-  }
-
-  public void setContract(contractTypeT contractType) {
-
   }
 
   @Override
