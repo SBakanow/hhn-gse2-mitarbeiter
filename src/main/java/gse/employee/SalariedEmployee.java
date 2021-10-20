@@ -1,5 +1,7 @@
 package gse.employee;
 
+import java.time.Month;
+
 /**
  * salaried employee class of the employee project.
  *
@@ -19,6 +21,8 @@ public class SalariedEmployee implements IEmployee, ITaxpayer {
   private float hourlySalary;
   private ContractTypeT contract;
 
+  // current month, starting in January
+  private Month currentMonth = Month.JANUARY;
 
   /**
    * constructor of the SalariedEmployee class.
@@ -185,22 +189,22 @@ public class SalariedEmployee implements IEmployee, ITaxpayer {
   @Override
   public float calculateMonth(float monthlySalary) {
     float result = (Math.round(monthlySalary * 100.0f) / 100.0f);
-    if (monthCounter < 12) {
-      yearlySalaryToThisDate += result;
-      monthCounter++;
-    } else {
-      yearlySalaryToThisDate = result;
-      monthCounter = 0;
+    if (currentMonth == Month.JANUARY) {
+      yearlySalaryToThisDate = 0;
     }
+    yearlySalaryToThisDate += result;
+    currentMonth = currentMonth.plus(1);
     return result;
   }
 
   public float actualIncomeTax() {
-    return yearlySalaryToThisDate * INCOMETAXRATE;
+    return yearlySalaryToThisDate * INCOME_TAX_RATE;
   }
 
   public float anticipatedIncomeTax() {
-    return 0;
+    int remainingMonths = currentMonth.getValue();
+    float averageIncomePerMonth = yearlySalaryToThisDate / currentMonth.getValue();
+    return averageIncomePerMonth * remainingMonths * INCOME_TAX_RATE + actualIncomeTax();
   }
 
   @Override
