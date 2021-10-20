@@ -1,7 +1,8 @@
 package gse.employee;
 
 public interface IEmployee {
-  final float MINIMUMWAGE = 9.50f;
+  float MINIMUMWAGE = 9.50f;
+  int WEEKLYWORKINGTIME = 4*40;
 
   /**
    * Getter for the forename.
