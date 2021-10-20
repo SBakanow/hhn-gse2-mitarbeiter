@@ -81,6 +81,7 @@ public class SalariedEmployee implements IEmployee, ITaxpayer {
    *
    * @return Surname of the employee
    */
+  @Override
   public String getSurname() {
     return surname;
   }
@@ -90,6 +91,7 @@ public class SalariedEmployee implements IEmployee, ITaxpayer {
    *
    * @return Forename of the employee
    */
+  @Override
   public String getForename() {
     return forename;
   }
@@ -99,6 +101,7 @@ public class SalariedEmployee implements IEmployee, ITaxpayer {
    *
    * @return Summed up salary to this day
    */
+  @Override
   public float getYearlySalaryToThisDate() {
     return yearlySalaryToThisDate;
   }
@@ -108,6 +111,7 @@ public class SalariedEmployee implements IEmployee, ITaxpayer {
    *
    * @return Month Counter
    */
+  @Override
   public int getMonthCounter() {
     return monthCounter;
   }
@@ -178,6 +182,7 @@ public class SalariedEmployee implements IEmployee, ITaxpayer {
    *
    * @param monthlySalary Monthly Salary that gets added.
    */
+  @Override
   public float calculateMonth(float monthlySalary) {
     float result = (Math.round(monthlySalary * 100.0f) / 100.0f);
     if (monthCounter < 12) {
