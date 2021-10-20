@@ -9,13 +9,13 @@ public class Main {
    */
   public static void main(String[] args) {
     try {
-      SalariedEmployee sergej = new SalariedEmployee("Sergej", "Bakanow", 3550, 0.5f, 35);
+      IEmployee sergej = new SalariedEmployee("Sergej", "Bakanow", 3550, 0.5f);
       TemporaryWorker noah = new TemporaryWorker("Noah", "Schmidt", 9.60f);
       NonTariffEmployee dennis = new NonTariffEmployee("Dennis", "Schneider", 10000.0f);
 
       System.out.println("********************");
       for (int i = 0; i < 12; i++) {
-        sergej.setHoursWorkedOvertime((int) Math.round(i * 2.1));
+        ((SalariedEmployee) sergej).setHoursWorkedOvertime((int) Math.round(i * 2.1));
         noah.setHoursWorked(150 - i);
         System.out.println(sergej + " Month " + (i + 1) + ": " + sergej.calculateSalary() + "€");
         System.out.println(dennis + " Month " + (i + 1) + ": " + dennis.calculateSalary() + "€");
@@ -28,7 +28,7 @@ public class Main {
 
       System.out.println("---------------------");
 
-      sergej.setHoursWorkedOvertime((int) Math.round(1 * 2.1));
+      ((SalariedEmployee) sergej).setHoursWorkedOvertime((int) Math.round(1 * 2.1));
       noah.setHoursWorked(150 - 1);
 
       System.out.println(sergej + " Month " + 1 + ": " + sergej.calculateSalary() + "€");

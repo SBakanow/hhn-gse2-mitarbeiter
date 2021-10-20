@@ -16,9 +16,8 @@ public class SalariedEmployee implements IEmployee, ITaxpayer {
   private String forename;
   private float yearlySalaryToThisDate;
   private float hourlySalary;
-  private final float INCOMETAXRATE = 0.36f;
-  private ContractTypeT contract;
 
+  private ContractTypeT contract;
   private int monthCounter = 0;
 
   /**
@@ -107,6 +106,7 @@ public class SalariedEmployee implements IEmployee, ITaxpayer {
         monthlySalary + ((hourlySalary + (hourlySalary * overtimeRate)) * hoursWorkedOvertime);
     salary = calculateMonth(salary);
     hoursWorkedOvertime = 0;
+    contract = ContractTypeT.TariffContract;
     return salary;
   }
 
@@ -190,7 +190,7 @@ public class SalariedEmployee implements IEmployee, ITaxpayer {
     return 0;
   }
 
-  public void setContract(contractTypeT contractType) {
+  public void setContract(ContractTypeT contractType) {
 
   }
 
