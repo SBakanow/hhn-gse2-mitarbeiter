@@ -16,11 +16,10 @@ public class SalariedEmployee implements IEmployee, ITaxpayer {
   private String surname;
   private String forename;
   private float yearlySalaryToThisDate;
-  private int monthCounter = 0;
 
   private float hourlySalary;
 
-  private ContractTypeT contract;
+  private ContractTypeT contract = ContractTypeT.Tariff;
 
   // current month, starting in January
   private Month currentMonth = Month.JANUARY;
@@ -112,16 +111,6 @@ public class SalariedEmployee implements IEmployee, ITaxpayer {
   }
 
   /**
-   * Get the Month Counter.
-   *
-   * @return Month Counter
-   */
-  @Override
-  public int getMonthCounter() {
-    return monthCounter;
-  }
-
-  /**
    * Returns the hourly salary of the worker.
    *
    * @return the hourly salary of the worker.
@@ -198,10 +187,20 @@ public class SalariedEmployee implements IEmployee, ITaxpayer {
     return result;
   }
 
+  /**
+   * Returns the actual tax for the year.
+   *
+   * @return the actual tax for the year.
+   */
   public float actualIncomeTax() {
     return yearlySalaryToThisDate * INCOME_TAX_RATE;
   }
 
+  /**
+   * Returns the anticipated tax for the whole year.
+   *
+   * @return the anticipated tax for the whole year.
+   */
   public float anticipatedIncomeTax() {
     int remainingMonths = currentMonth.getValue();
     float averageIncomePerMonth = yearlySalaryToThisDate / currentMonth.getValue();
@@ -210,6 +209,7 @@ public class SalariedEmployee implements IEmployee, ITaxpayer {
 
   @Override
   public String toString() {
-    return getClass().getSimpleName() + " " + forename + " " + surname + " " + contract;
+    return getClass().getSimpleName() + " " + forename + " " + surname + " "
+        + contract.getContractName();
   }
 }
