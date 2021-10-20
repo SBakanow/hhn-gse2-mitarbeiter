@@ -48,7 +48,6 @@ public class TemporaryWorker implements IEmployee, ITaxpayer {
     return null;
   }
 
-  @Override
   public int getMonthCounter() {
     return 0;
   }

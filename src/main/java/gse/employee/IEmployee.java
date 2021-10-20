@@ -16,13 +16,6 @@ public interface IEmployee {
   String getForename();
 
   /**
-   * Get the Month Counter
-   *
-   * @return Month Counter
-   */
-  int getMonthCounter();
-
-  /**
    * Getter SummedUpSalary.
    *
    * @return Summed up salary to this day
