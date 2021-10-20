@@ -2,7 +2,7 @@ package gse.employee;
 
 public interface ITaxpayer {
 
-  float INCOMETAXRATE = 0.36f;
+  float INCOME_TAX_RATE = 0.36f;
 
   float actualIncomeTax();
 

@@ -197,7 +197,7 @@ public class SalariedEmployee implements IEmployee, ITaxpayer {
   }
 
   public float actualIncomeTax() {
-    return yearlySalaryToThisDate * INCOMETAXRATE;
+    return yearlySalaryToThisDate * INCOME_TAX_RATE;
   }
 
   public float anticipatedIncomeTax() {
