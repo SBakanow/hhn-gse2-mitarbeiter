@@ -18,6 +18,13 @@ public abstract class Employee implements IEmployee, ITaxpayer {
 
   private ContractTypeT contract;
 
+  /**
+   * Constructor of the abstract class Employee.
+   *
+   * @param forename the first name of the worker.
+   * @param surname the surname of the worker.
+   * @param contract the contract type of the worker.
+   */
   public Employee(String forename, String surname, ContractTypeT contract) {
     if (forename != null && !forename.isBlank()) {
       this.forename = forename;
@@ -66,15 +73,17 @@ public abstract class Employee implements IEmployee, ITaxpayer {
   /**
    * Returns the contract of the worker.
    *
-   * @return the contract of the worker.
+   * @return The contract type of the worker.
    */
   public ContractTypeT getContract() {
     return contract;
   }
 
   /**
-   * Method to reset the yearly salary after a year has passed.
-   * Implemented as protected as no other person is allowed to call it.
+   * Method to reset the salary and round the number.
+   * The rounding formula is Math.round(monthlySalary * 100) / 100
+   * 2,5551 * 100 = 255,51
+   * Math.round(255,51) = 256 / 100 = 2,56
    *
    * @param monthlySalary Monthly Salary that gets added.
    */
@@ -92,7 +101,7 @@ public abstract class Employee implements IEmployee, ITaxpayer {
   /**
    * Returns the actual tax for the year.
    *
-   * @return the actual tax for the year.
+   * @return The actual tax for the year.
    */
   public float actualIncomeTax() {
     return yearlySalaryToThisDate * INCOME_TAX_RATE;
@@ -101,7 +110,7 @@ public abstract class Employee implements IEmployee, ITaxpayer {
   /**
    * Returns the anticipated tax for the whole year.
    *
-   * @return the anticipated tax for the whole year.
+   * @return The anticipated tax for the whole year.
    */
   public float anticipatedIncomeTax() {
     int remainingMonths = currentMonth.getValue();
