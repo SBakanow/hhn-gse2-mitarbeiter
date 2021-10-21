@@ -6,7 +6,7 @@ package gse.employee;
  * @author Dennis Schneider
  */
 
-public class NonTariffEmployee implements IEmployee, ITaxpayer {
+public class NonTariffEmployee extends Employee {
 
   private float monthlySalary;
 

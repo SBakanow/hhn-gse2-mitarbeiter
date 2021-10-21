@@ -5,7 +5,7 @@ package gse.employee;
  *
  * @author Noah Schmidt
  */
-public class TemporaryWorker implements IEmployee, ITaxpayer {
+public class TemporaryWorker extends Employee {
 
   private final float hourlyWage;
   private int hoursWorked;
