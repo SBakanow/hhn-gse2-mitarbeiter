@@ -1,33 +1,32 @@
 package gse.employee;
 
-import java.time.Month;
-
 /**
- * salaried employee class of the employee project.
+ * Salaried employee class of the employee project.
  *
  * @author Sergej Bakanow
  */
-public class SalariedEmployee extends Employee implements IEmployee, ITaxpayer {
+public class SalariedEmployee extends Employee {
 
   private float monthlySalary;
   private float overtimeRate;
   private int hoursWorkedOvertime;
 
-  private float hourlySalary;
+  private float hourlyWage;
 
   /**
-   * constructor of the SalariedEmployee class.
+   * Constructor of the SalariedEmployee class.
    *
    * @param forename      the first name of the worker.
    * @param surname       the surname of the worker.
    * @param monthlySalary the monthly Salary the worker receives.
    * @param overtimeRate  the overtime rate in percent.
+   * @param contract      the contract type of the worker
    */
   public SalariedEmployee(String forename, String surname, float monthlySalary,
                           float overtimeRate, ContractTypeT contract) {
     super(forename, surname, contract);
-    calculateHourlySalary(monthlySalary);
-    if (hourlySalary >= MINIMUM_WAGE && overtimeRate >= 0 && overtimeRate <= 1) {
+    calculateHourlyWage(monthlySalary);
+    if (hourlyWage >= MINIMUM_WAGE && overtimeRate >= 0 && overtimeRate <= 1) {
       this.monthlySalary = monthlySalary;
       this.overtimeRate = overtimeRate;
     } else {
@@ -67,8 +66,8 @@ public class SalariedEmployee extends Employee implements IEmployee, ITaxpayer {
    *
    * @return the hourly salary of the worker.
    */
-  public float getHourlySalary() {
-    return hourlySalary;
+  public float getHourlyWage() {
+    return hourlyWage;
   }
 
   /**
@@ -81,24 +80,23 @@ public class SalariedEmployee extends Employee implements IEmployee, ITaxpayer {
   }
 
   /**
-   * Calculates the hourly salary with the given monthly salary.
+   * Calculates the hourly wage with the given monthly salary.
    *
-   * @param monthlySalary the monthly salary of the worker.
+   * @param monthlySalary The monthly salary of the worker.
    */
-  public void calculateHourlySalary(float monthlySalary) {
-    hourlySalary = (monthlySalary / (WEEKLY_WORKING_TIME * 4));
+  public void calculateHourlyWage(float monthlySalary) {
+    hourlyWage = (monthlySalary / (WEEKLY_WORKING_TIME * 4));
   }
 
   /**
    * Calculates the monthly salary, considering hours worked overtime and overtime rate.
    *
-   * @return salary The monthly salary.
+   * @return The monthly salary.
    */
   @Override
   public float calculateSalary() {
-    float hourlySalary = (monthlySalary / (WEEKLY_WORKING_TIME * 4.33f));
     float salary =
-        monthlySalary + ((hourlySalary + (hourlySalary * overtimeRate)) * hoursWorkedOvertime);
+        monthlySalary + ((hourlyWage + (hourlyWage * overtimeRate)) * hoursWorkedOvertime);
     salary = calculateMonth(salary);
     hoursWorkedOvertime = 0;
     return salary;
