@@ -80,7 +80,8 @@ public abstract class Employee implements IEmployee, ITaxpayer {
   }
 
   /**
-   * Method to reset the salary and round the number.
+   * Method to reset the yearly salary after a year has passed and round the number to
+   * two decimal places.
    * The rounding formula is Math.round(monthlySalary * 100) / 100
    * 2,5551 * 100 = 255,51
    * Math.round(255,51) = 256 / 100 = 2,56
@@ -88,7 +89,7 @@ public abstract class Employee implements IEmployee, ITaxpayer {
    * @param monthlySalary Monthly Salary that gets added.
    */
   @Override
-  public float calculateMonth(float monthlySalary) {
+  public float addToYearlySalary(float monthlySalary) {
     float result = (Math.round(monthlySalary * 100.0f) / 100.0f);
     if (currentMonth == Month.JANUARY) {
       yearlySalaryToThisDate = 0;
@@ -99,21 +100,25 @@ public abstract class Employee implements IEmployee, ITaxpayer {
   }
 
   /**
-   * Returns the actual tax for the year.
+   * Returns the actual tax for the yearly salary to this date.
    *
    * @return The actual tax for the year.
    */
+  @Override
   public float actualIncomeTax() {
     return yearlySalaryToThisDate * INCOME_TAX_RATE;
   }
 
   /**
-   * Returns the anticipated tax for the whole year.
+   * Returns the anticipated tax for the whole year by calculating the average income per month
+   * and adding the tax for this average income times the remaining months in the year
+   * to the actual income tax.
    *
    * @return The anticipated tax for the whole year.
    */
+  @Override
   public float anticipatedIncomeTax() {
-    int remainingMonths = currentMonth.getValue();
+    int remainingMonths = 12 - currentMonth.getValue();
     float averageIncomePerMonth = yearlySalaryToThisDate / currentMonth.getValue();
     return averageIncomePerMonth * remainingMonths * INCOME_TAX_RATE + actualIncomeTax();
   }
