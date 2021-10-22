@@ -99,7 +99,7 @@ public class SalariedEmployee extends Employee {
    * @param monthlySalary The monthly salary of the worker.
    */
   public void calculateHourlyWage(float monthlySalary) {
-    hourlyWage = (monthlySalary / (WEEKLY_WORKING_TIME * 4));
+    hourlyWage = (monthlySalary / (WEEKLY_WORKING_TIME * WEEKS_IN_A_MONTH));
   }
 
   /**

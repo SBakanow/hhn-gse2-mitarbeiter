@@ -7,6 +7,7 @@ public interface IEmployee {
 
   float MINIMUM_WAGE = 9.60f; //Since the 1. July (+10cent... wow)
   int WEEKLY_WORKING_TIME = 40; //Hours
+  int WEEKS_IN_A_MONTH = 4; //number of weeks in a month
 
   /**
    * Getter for the forename.
