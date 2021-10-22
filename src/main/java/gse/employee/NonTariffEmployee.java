@@ -43,13 +43,13 @@ public class NonTariffEmployee extends Employee {
   }
 
   @Override
-  public float calculateMonth(float monthlySalary) {
+  public float addToYearlySalary(float monthlySalary) {
     return 0;
   }
 
   @Override
   public float calculateSalary() {
-    monthlySalary = calculateMonth(monthlySalary);
+    monthlySalary = this.addToYearlySalary(monthlySalary);
     return monthlySalary;
   }
 

@@ -8,27 +8,39 @@ package gse.employee;
 public class SalariedEmployee extends Employee {
 
   private float monthlySalary;
-  private float overtimeRate;
+
+  // the overtime tariff for overtime hours in €
+  private float overtimeTariff;
   private int hoursWorkedOvertime;
 
+  /* hourly wage calculated from the monthly salary, considering a weekly work time of 40 hours
+  and 4 weeks in a month
+   */
   private float hourlyWage;
 
   /**
    * Constructor of the SalariedEmployee class.
    *
-   * @param forename      the first name of the worker.
-   * @param surname       the surname of the worker.
-   * @param monthlySalary the monthly Salary the worker receives.
-   * @param overtimeRate  the overtime rate in percent.
-   * @param contract      the contract type of the worker
+   * @param forename       the first name of the worker.
+   * @param surname        the surname of the worker.
+   * @param monthlySalary  the monthly Salary the worker receives.
+   * @param overtimeTariff the overtime tariff the worker gets per hour.
+   * @param contract       the contract type of the worker
    */
   public SalariedEmployee(String forename, String surname, float monthlySalary,
-                          float overtimeRate, ContractTypeT contract) {
+                          float overtimeTariff, ContractTypeT contract) {
     super(forename, surname, contract);
+
+    // calculating the hourly wage for the minimum wage check
     calculateHourlyWage(monthlySalary);
-    if (hourlyWage >= MINIMUM_WAGE && overtimeRate >= 0 && overtimeRate <= 1) {
+
+    /* checking if the hourly wage meets at least the minimum wage and if the overtime tariff meets
+    at least the hourly wage, since it would make no sense to get less money overtime than the
+    hourly wage
+    */
+    if (hourlyWage >= MINIMUM_WAGE && overtimeTariff >= hourlyWage) {
       this.monthlySalary = monthlySalary;
-      this.overtimeRate = overtimeRate;
+      this.overtimeTariff = overtimeTariff;
     } else {
       throw new IllegalArgumentException("Some values were not in accordance with the law.");
     }
@@ -44,12 +56,12 @@ public class SalariedEmployee extends Employee {
   }
 
   /**
-   * Returns the overtime rate.
+   * Returns the hourly overtime tariff for working overtime hours.
    *
-   * @return Returns the overtime rate.
+   * @return Returns the overtime tariff.
    */
-  public float getOvertimeRate() {
-    return overtimeRate;
+  public float getOvertimeTariff() {
+    return overtimeTariff;
   }
 
   /**
@@ -62,9 +74,9 @@ public class SalariedEmployee extends Employee {
   }
 
   /**
-   * Returns the hourly salary of the worker.
+   * Returns the hourly wage of the worker.
    *
-   * @return the hourly salary of the worker.
+   * @return the hourly wage of the worker.
    */
   public float getHourlyWage() {
     return hourlyWage;
@@ -80,7 +92,9 @@ public class SalariedEmployee extends Employee {
   }
 
   /**
-   * Calculates the hourly wage with the given monthly salary.
+   * Calculates the hourly wage with the given monthly salary and the weekly work time times
+   * the weeks in a month. Overtime hours and the overtime tariff are not taken into account, since
+   * they are not part of the hourly wage of the tariff.
    *
    * @param monthlySalary The monthly salary of the worker.
    */
@@ -89,15 +103,16 @@ public class SalariedEmployee extends Employee {
   }
 
   /**
-   * Calculates the monthly salary, considering hours worked overtime and overtime rate.
+   * Calculates the actual monthly salary, considering hours worked overtime and overtime tariff,
+   * adding the monthly salary to the yearly salary to this date with the method call
+   * addToYearlySalary and setting the hours worked overtime back to zero at the end of each month.
    *
-   * @return The monthly salary.
+   * @return The actual monthly salary after adding compensation for overtime work.
    */
   @Override
   public float calculateSalary() {
-    float salary =
-        monthlySalary + ((hourlyWage + (hourlyWage * overtimeRate)) * hoursWorkedOvertime);
-    salary = calculateMonth(salary);
+    float salary = monthlySalary + (overtimeTariff * hoursWorkedOvertime);
+    salary = addToYearlySalary(salary);
     hoursWorkedOvertime = 0;
     return salary;
   }

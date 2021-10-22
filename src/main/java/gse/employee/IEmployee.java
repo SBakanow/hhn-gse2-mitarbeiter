@@ -30,14 +30,15 @@ public interface IEmployee {
   String getSurname();
 
   /**
-   * Method to reset the salary and round the number.
+   * Method to reset the yearly salary after a year has passed and round the number to
+   * two decimal places.
    * The rounding formula is Math.round(monthlySalary * 100) / 100
    * 2,5551 * 100 = 255,51
    * Math.round(255,51) = 256 / 100 = 2,56
    *
    * @param monthlySalary Monthly Salary that gets added.
    */
-  float calculateMonth(float monthlySalary);
+  float addToYearlySalary(float monthlySalary);
 
   /**
    * Method to calculate the salary.

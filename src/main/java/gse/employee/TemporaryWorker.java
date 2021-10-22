@@ -63,7 +63,7 @@ public class TemporaryWorker extends Employee {
   }
 
   @Override
-  public float calculateMonth(float monthlySalary) {
+  public float addToYearlySalary(float monthlySalary) {
     return 0;
   }
 
@@ -75,7 +75,7 @@ public class TemporaryWorker extends Employee {
   @Override
   public float calculateSalary() {
     float result = hourlyWage * hoursWorked;
-    result = calculateMonth(result);
+    result = addToYearlySalary(result);
     hoursWorked = 0;
     return result;
   }
