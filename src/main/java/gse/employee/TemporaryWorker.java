@@ -1,92 +1,88 @@
 package gse.employee;
 
 /**
- * This class represents a temporary Worker.
+ * This class represents a temporary worker.
  *
  * @author Noah Schmidt
  */
 public class TemporaryWorker extends Employee {
 
-  private final float hourlyWage;
-  private int hoursWorked;
+    // The hourlyWage is final and can only be changed by a new contract.
+    private final float hourlyWage;
 
-  public TemporaryWorker(String forename, String surname, float hourlyWage) {
-    //Minimal wage Germany
-    this.hourlyWage = Math.max(hourlyWage, 9.60f);
-    this.hoursWorked = 0;
-  }
+    // Number of hours worked.
+    private int hoursWorked;
 
-  /**
-   * Return the fixed wage per hour.
-   *
-   * @return Wage per hour.
-   */
-  public float getHourlyWage() {
-    return hourlyWage;
-  }
 
-  /**
-   * Returns the hours worked this month.
-   *
-   * @return Hours worked this month.
-   */
-  public int getHoursWorked() {
-    return hoursWorked;
-  }
+    /**
+     * Constructor of the TemporaryWorker class.
+     *
+     * @param forename      the first name of the worker.
+     * @param surname       the surname of the worker.
+     * @param hourlyWage    the wage per hour this worker will earn.
+     * @param contractType  the type of contract given.
+     */
+    public TemporaryWorker(String forename, String surname, float hourlyWage, ContractTypeT contractType) {
+        super(forename, surname, contractType);
 
-  /**
-   * Sets the hours worked this month.
-   *
-   * @param hoursWorked The hours worked.
-   */
-  public void setHoursWorked(int hoursWorked) {
-    this.hoursWorked = hoursWorked;
-  }
+        //Checks whether the stated wage is higher than the statutory minimum wage.
+        // If it´s lower an exception will be thrown.
+        if (hourlyWage < MINIMUM_WAGE) {
+            throw new IllegalArgumentException("The stated salary does not correspond to the minimum wage");
+        }
 
-  @Override
-  public String getForename() {
-    return null;
-  }
+        //Initializes hourlyWage and hoursWorked.
+        this.hourlyWage = hourlyWage;
+        this.hoursWorked = 0;
+    }
 
-  public int getMonthCounter() {
-    return 0;
-  }
+    @Override
+    public String getForename() {
+        return null;
+    }
 
-  @Override
-  public float getYearlySalaryToThisDate() {
-    return 0;
-  }
+    @Override
+    public String getSurname() {
+        return surname;
+    }
 
-  @Override
-  public String getSurname() {
-    return null;
-  }
+    /**
+     * Return the fixed wage per hour.
+     *
+     * @return Wage per hour.
+     */
+    public float getHourlyWage() {
+        return hourlyWage;
+    }
 
-  @Override
-  public float addToYearlySalary(float monthlySalary) {
-    return 0;
-  }
+    /**
+     * Returns the hours worked this month.
+     *
+     * @return Hours worked this month.
+     */
+    public int getHoursWorked() {
+        return hoursWorked;
+    }
 
-  /**
-   * Calculates the salary for this month.
-   *
-   * @return Salary for the current month.
-   */
-  @Override
-  public float calculateSalary() {
-    float result = hourlyWage * hoursWorked;
-    result = addToYearlySalary(result);
-    hoursWorked = 0;
-    return result;
-  }
+    /**
+     * Sets the hours worked this month.
+     *
+     * @param hoursWorked The hours worked this month.
+     */
+    public void setHoursWorked(int hoursWorked) {
+        this.hoursWorked = hoursWorked;
+    }
 
-  @Override
-  public float actualIncomeTax() {
-    return 0;
-  }
-
-  @Override
-  public float anticipatedIncomeTax() {
-    return 0;
-  }
+    /**
+     * Calculates the salary for this month.
+     *
+     * @return Salary for the current month.
+     */
+    @Override
+    public float calculateSalary() {
+        float result = hourlyWage * hoursWorked;
+        result = addToYearlySalary(result);
+        hoursWorked = 0;
+        return result;
+    }
 }

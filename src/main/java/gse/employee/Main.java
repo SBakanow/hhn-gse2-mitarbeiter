@@ -10,8 +10,9 @@ public class Main {
   public static void main(String[] args) {
     IEmployee sergej = new SalariedEmployee("Sergej", "Bakanow", 3550, 0.5f, ContractTypeT.Tariff);
     System.out.println(sergej);
-    /*TemporaryWorker noah = new TemporaryWorker("Noah", "Schmidt", 9.60f);
-      NonTariffEmployee dennis = new NonTariffEmployee("Dennis", "Schneider", 10000.0f);
+    IEmployee noah = new TemporaryWorker("Noah", "Schmidt", 9.60f, ContractTypeT.TimeDependent);
+    System.out.println(noah);
+    /*NonTariffEmployee dennis = new NonTariffEmployee("Dennis", "Schneider", 10000.0f);
 
       System.out.println("********************");
       for (int i = 0; i < 12; i++) {
