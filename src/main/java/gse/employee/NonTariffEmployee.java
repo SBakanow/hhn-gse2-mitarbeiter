@@ -11,12 +11,14 @@ public class NonTariffEmployee extends Employee {
   private float monthlySalary;
 
 
-  public NonTariffEmployee(String forename, String surname, float monthlySalary) {
-    if(monthlySalary >= 1) {
-      this.monthlySalary = monthlySalary;
-    } else {
-      throw new NullPointerException("Value must be greater than 0");
-    }
+  public NonTariffEmployee(float monthlySalary, String forename, String surname,
+      ContractTypeT contractType) {
+    super(forename, surname, contractType);
+    if (monthlySalary < MINIMUM_WAGE*WEEKS_IN_A_MONTH*WEEKLY_WORKING_TIME) {
+      throw new IllegalArgumentException("You need to pay at least 9.60 Euro minimum wage!");
+    } else
+    this.monthlySalary = monthlySalary;
+
   }
 
   public float getMonthlySalary() {
@@ -25,26 +27,12 @@ public class NonTariffEmployee extends Employee {
 
   @Override
   public String getForename() {
-    return null;
-  }
-
-  public int getMonthCounter() {
-    return 0;
-  }
-
-  @Override
-  public float getYearlySalaryToThisDate() {
-    return 0;
+    return forename;
   }
 
   @Override
   public String getSurname() {
-    return null;
-  }
-
-  @Override
-  public float addToYearlySalary(float monthlySalary) {
-    return 0;
+    return surname;
   }
 
   @Override
@@ -53,13 +41,4 @@ public class NonTariffEmployee extends Employee {
     return monthlySalary;
   }
 
-  @Override
-  public float actualIncomeTax() {
-    return 0;
-  }
-
-  @Override
-  public float anticipatedIncomeTax() {
-    return 0;
-  }
 }
