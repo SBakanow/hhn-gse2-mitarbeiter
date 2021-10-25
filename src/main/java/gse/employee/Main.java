@@ -35,7 +35,7 @@ public class Main {
         System.out.println(dennis + ": " + dennis.actualIncomeTax() + "€");
         System.out.println(noah + ": " + noah.actualIncomeTax() + "€");
 
-        System.out.println("---------------------");
+        System.out.println();
         System.out.println("Predicted Yearly Income taxes to this date: ");
 
         System.out.println(sergej + ": " + sergej.anticipatedIncomeTax() + "€");
@@ -43,6 +43,7 @@ public class Main {
         System.out.println(noah + ": " + noah.anticipatedIncomeTax() + "€");
 
         System.out.println("---------------------");
+        System.out.println();
       }
 
       System.out.println("Yearly Salary to this date: ");
@@ -51,6 +52,7 @@ public class Main {
       System.out.println(noah + " Yearly Salary to this Date: " + noah.getYearlySalaryToThisDate() + "€");
 
       System.out.println("---------------------");
+      System.out.println();
       System.out.println("NEW YEAR STARTED");
 
       System.out.println("Month " + sergej.getCurrentMonth());
@@ -62,7 +64,7 @@ public class Main {
       System.out.println(dennis + ": " + dennis.calculateSalary() + "€");
       System.out.println(noah + ": " + noah.calculateSalary() + "€");
 
-      System.out.println("---------------------");
+      System.out.println();
 
       System.out.println(sergej + " Yearly Salary to this Date: " + sergej.getYearlySalaryToThisDate() + "€");
       System.out.println(dennis + " Yearly Salary to this Date: " + dennis.getYearlySalaryToThisDate() + "€");

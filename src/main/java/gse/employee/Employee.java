@@ -118,16 +118,19 @@ public abstract class Employee implements IEmployee, ITaxpayer {
    */
   @Override
   public float anticipatedIncomeTax() {
-    int remainingMonths = 12 - currentMonth.minus(1).getValue();
+    //We need to subtract one from the month because we begin in January and need to calculate it backwards.
+    int remainingMonths = 12 - currentMonth.minus(1).getValue(); //Calculate the remaining months
     float averageIncomePerMonth = yearlySalaryToThisDate / currentMonth.minus(1).getValue(); //Calculate the average income of the month
+
     float anticipatedIncomeTaxOfRemainingMonths = averageIncomePerMonth * remainingMonths * INCOME_TAX_RATE; //Calculate the anticipated Income Tax of the remaining months
-    anticipatedIncomeTaxOfRemainingMonths =  roundValueToTwoDecimals(anticipatedIncomeTaxOfRemainingMonths);
-    return anticipatedIncomeTaxOfRemainingMonths + actualIncomeTax();
+
+    return roundValueToTwoDecimals(anticipatedIncomeTaxOfRemainingMonths) + actualIncomeTax();
   }
 
   /**
    * Round the value to two decimal points
    * The rounding formula is Math.round(value * 100) / 100
+   * Example:
    * 2,5551 * 100 = 255,51
    * Math.round(255,51) = 256 / 100 = 2,56
    *

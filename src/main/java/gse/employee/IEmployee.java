@@ -37,4 +37,11 @@ public interface IEmployee {
    * @return The calculated salary
    */
   float calculateSalary();
+
+  /**
+   * Return the fore and surname of the employee and his class name.
+   *
+   * @return String of the fore and surname
+   */
+  String toString();
 }
