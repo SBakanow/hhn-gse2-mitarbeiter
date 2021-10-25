@@ -38,7 +38,7 @@ public class TemporaryWorker extends Employee {
 
     @Override
     public String getForename() {
-        return null;
+        return forename;
     }
 
     @Override

@@ -11,14 +11,14 @@ public class NonTariffEmployee extends Employee {
   private float monthlySalary;
 
 
-  public NonTariffEmployee(float monthlySalary, String forename, String surname,
-      ContractTypeT contractType) {
+  public NonTariffEmployee(String forename, String surname, float monthlySalary,
+                           ContractTypeT contractType) {
     super(forename, surname, contractType);
-    if (monthlySalary < MINIMUM_WAGE*WEEKS_IN_A_MONTH*WEEKLY_WORKING_TIME) {
+    if (monthlySalary < MINIMUM_WAGE * MONTHLY_WORKING_TIME) {
       throw new IllegalArgumentException("You need to pay at least 9.60 Euro minimum wage!");
-    } else
-    this.monthlySalary = monthlySalary;
-
+    } else {
+      this.monthlySalary = monthlySalary;
+    }
   }
 
   public float getMonthlySalary() {
@@ -37,7 +37,7 @@ public class NonTariffEmployee extends Employee {
 
   @Override
   public float calculateSalary() {
-    monthlySalary = this.addToYearlySalary(monthlySalary);
+    monthlySalary = addToYearlySalary(monthlySalary);
     return monthlySalary;
   }
 

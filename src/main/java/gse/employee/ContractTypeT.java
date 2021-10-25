@@ -5,7 +5,7 @@ public enum ContractTypeT {
   Tariff("Tariff Contract"),
   NonTariff("Non Tariff Contract");
 
-  private String contractName;
+  private final String contractName;
 
   ContractTypeT(String contractName) {
     this.contractName = contractName;

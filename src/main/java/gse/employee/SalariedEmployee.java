@@ -7,10 +7,10 @@ package gse.employee;
  */
 public class SalariedEmployee extends Employee {
 
-  private float monthlySalary;
+  private final float monthlySalary;
 
   // the overtime tariff for overtime hours in €
-  private float overtimeTariff;
+  private final float overtimeTariff;
   private int hoursWorkedOvertime;
 
   /* hourly wage calculated from the monthly salary, considering a weekly work time of 40 hours
@@ -99,7 +99,7 @@ public class SalariedEmployee extends Employee {
    * @param monthlySalary The monthly salary of the worker.
    */
   public void calculateHourlyWage(float monthlySalary) {
-    hourlyWage = (monthlySalary / (WEEKLY_WORKING_TIME * WEEKS_IN_A_MONTH));
+    hourlyWage = roundValueToTwoDecimals(monthlySalary / MONTHLY_WORKING_TIME);
   }
 
   /**

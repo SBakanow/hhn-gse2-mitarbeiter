@@ -9,6 +9,7 @@ import java.time.Month;
  */
 public abstract class Employee implements IEmployee, ITaxpayer {
 
+
   protected String surname;
   protected String forename;
   protected float yearlySalaryToThisDate;
@@ -16,14 +17,14 @@ public abstract class Employee implements IEmployee, ITaxpayer {
   // current month, starting in January
   private Month currentMonth = Month.JANUARY;
 
-  private ContractTypeT contract;
+  private final ContractTypeT contract;
 
   /**
    * Constructor of the abstract class Employee.
    *
-   * @param forename the first name of the worker.
-   * @param surname the surname of the worker.
-   * @param contract the contract type of the worker.
+   * @param forename The first name of the worker.
+   * @param surname The surname of the worker.
+   * @param contract The contract type of the worker.
    */
   public Employee(String forename, String surname, ContractTypeT contract) {
     if (forename != null && !forename.isBlank()) {
@@ -36,8 +37,8 @@ public abstract class Employee implements IEmployee, ITaxpayer {
     } else {
       this.surname = "Doe";
     }
-
     this.contract = contract;
+    System.out.println(this + " created.");
   }
 
   /**
@@ -80,17 +81,15 @@ public abstract class Employee implements IEmployee, ITaxpayer {
   }
 
   /**
-   * Method to reset the yearly salary after a year has passed and round the number to
-   * two decimal places.
-   * The rounding formula is Math.round(monthlySalary * 100) / 100
-   * 2,5551 * 100 = 255,51
-   * Math.round(255,51) = 256 / 100 = 2,56
+   * Method to reset the yearly salary after a year has passed.
+   * Every time it is called, the month gets added up by one.
+   * Starting month: January
    *
    * @param monthlySalary Monthly Salary that gets added.
+   *                      Recommended use is to use the calculateSalary with this method.
    */
-  @Override
-  public float addToYearlySalary(float monthlySalary) {
-    float result = (Math.round(monthlySalary * 100.0f) / 100.0f);
+  protected float addToYearlySalary(float monthlySalary) {
+    float result = roundValueToTwoDecimals(monthlySalary);
     if (currentMonth == Month.JANUARY) {
       yearlySalaryToThisDate = 0;
     }
@@ -106,7 +105,8 @@ public abstract class Employee implements IEmployee, ITaxpayer {
    */
   @Override
   public float actualIncomeTax() {
-    return yearlySalaryToThisDate * INCOME_TAX_RATE;
+    float result = yearlySalaryToThisDate * INCOME_TAX_RATE; //Calculate the income tax
+    return roundValueToTwoDecimals(result);
   }
 
   /**
@@ -118,9 +118,33 @@ public abstract class Employee implements IEmployee, ITaxpayer {
    */
   @Override
   public float anticipatedIncomeTax() {
-    int remainingMonths = 12 - currentMonth.getValue();
-    float averageIncomePerMonth = yearlySalaryToThisDate / currentMonth.getValue();
-    return averageIncomePerMonth * remainingMonths * INCOME_TAX_RATE + actualIncomeTax();
+    int remainingMonths = 12 - currentMonth.minus(1).getValue();
+    float averageIncomePerMonth = yearlySalaryToThisDate / currentMonth.minus(1).getValue(); //Calculate the average income of the month
+    float anticipatedIncomeTaxOfRemainingMonths = averageIncomePerMonth * remainingMonths * INCOME_TAX_RATE; //Calculate the anticipated Income Tax of the remaining months
+    anticipatedIncomeTaxOfRemainingMonths =  roundValueToTwoDecimals(anticipatedIncomeTaxOfRemainingMonths);
+    return anticipatedIncomeTaxOfRemainingMonths + actualIncomeTax();
+  }
+
+  /**
+   * Round the value to two decimal points
+   * The rounding formula is Math.round(value * 100) / 100
+   * 2,5551 * 100 = 255,51
+   * Math.round(255,51) = 256 / 100 = 2,56
+   *
+   * @param value Value to be rounded
+   * @return Value after rounding
+   */
+  protected float roundValueToTwoDecimals(float value) {
+    return (Math.round(value * 100.0f) / 100.0f);
+  }
+
+  /**
+   * Getter for the current month
+   *
+   * @return Current month
+   */
+  public Month getCurrentMonth() {
+    return currentMonth;
   }
 
   @Override
