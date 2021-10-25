@@ -39,6 +39,13 @@ public interface IEmployee {
   float calculateSalary();
 
   /**
+   * Returns the contract of the worker.
+   *
+   * @return The contract type of the worker.
+   */
+   ContractTypeT getContract();
+
+  /**
    * Return the fore and surname of the employee and his class name.
    *
    * @return String of the fore and surname
