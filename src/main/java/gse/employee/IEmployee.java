@@ -6,7 +6,8 @@ package gse.employee;
 public interface IEmployee {
 
   float MINIMUM_WAGE = 9.60f; //Since the 1. July (+10cent... wow)
-  int WEEKLY_WORKING_TIME = 40; //Hours
+  int WEEKLY_WORKING_TIME = 40; //Hours per week
+  int MONTHLY_WORKING_TIME = WEEKLY_WORKING_TIME * 4; //Hours per Month
   int WEEKS_IN_A_MONTH = 4; //number of weeks in a month
 
   /**
