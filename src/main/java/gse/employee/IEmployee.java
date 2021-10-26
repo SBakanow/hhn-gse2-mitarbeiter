@@ -45,7 +45,7 @@ public interface IEmployee {
    *
    * @return The contract type of the worker.
    */
-   ContractTypeT getContract();
+  ContractTypeT getContract();
 
   /**
    * Return the fore and surname of the employee and his class name.

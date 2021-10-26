@@ -16,14 +16,14 @@ public abstract class Employee implements IEmployee, ITaxpayer {
 
   // current month, starting in January
   private Month currentMonth = Month.JANUARY;
-
+  // contract type of the worker
   private final ContractTypeT contract;
 
   /**
    * Constructor of the abstract class Employee.
    *
    * @param forename The first name of the worker.
-   * @param surname The surname of the worker.
+   * @param surname  The surname of the worker.
    * @param contract The contract type of the worker.
    */
   public Employee(String forename, String surname, ContractTypeT contract) {
@@ -37,7 +37,7 @@ public abstract class Employee implements IEmployee, ITaxpayer {
     } else {
       throw new IllegalArgumentException("No surname was specified!");
     }
-    if(contract != null) {
+    if (contract != null) {
       this.contract = contract;
     } else {
       throw new IllegalArgumentException("No contract type was specified!");
@@ -86,6 +86,15 @@ public abstract class Employee implements IEmployee, ITaxpayer {
   }
 
   /**
+   * Getter for the current month.
+   *
+   * @return Current month
+   */
+  public Month getCurrentMonth() {
+    return currentMonth;
+  }
+
+  /**
    * Method to reset the yearly salary after a year has passed.
    * Every time it is called, the month gets added up by one.
    * Starting month: January
@@ -118,17 +127,21 @@ public abstract class Employee implements IEmployee, ITaxpayer {
    * Returns the anticipated tax for the whole year by calculating the average income per month
    * and adding the tax for this average income times the remaining months in the year
    * to the actual income tax.
-   * We need to subtract one from the month because we begin in January and need to calculate it backwards.
+   * We need to subtract one from the month because we begin in January and need
+   * to calculate it backwards.
    *
    * @return The anticipated tax for the whole year.
    */
   @Override
   public float anticipatedIncomeTax() {
     int remainingMonths = 12 - currentMonth.minus(1).getValue(); //Calculate the remaining months
-    float averageIncomePerMonth = yearlySalaryToThisDate / currentMonth.minus(1).getValue(); //Calculate the average income of the month
+    //Calculate the average income of the month
+    float averageIncomePerMonth = yearlySalaryToThisDate / currentMonth.minus(1).getValue();
 
-    //Calculate the anticipated Income Tax of the remaining months via multiplying the averageIncome, the remaining months and the Tax Rate
-    float anticipatedIncomeTaxOfRemainingMonths = averageIncomePerMonth * remainingMonths * INCOME_TAX_RATE;
+    //Calculate the anticipated Income Tax of the remaining months via multiplying
+    //the averageIncome, the remaining months and the Tax Rate
+    float anticipatedIncomeTaxOfRemainingMonths =
+        averageIncomePerMonth * remainingMonths * INCOME_TAX_RATE;
 
     //Round the anticipated tax and add the actual income tax
     return roundValueToTwoDecimals(anticipatedIncomeTaxOfRemainingMonths) + actualIncomeTax();
@@ -146,15 +159,6 @@ public abstract class Employee implements IEmployee, ITaxpayer {
    */
   protected float roundValueToTwoDecimals(float value) {
     return (Math.round(value * 100.0f) / 100.0f);
-  }
-
-  /**
-   * Getter for the current month
-   *
-   * @return Current month
-   */
-  public Month getCurrentMonth() {
-    return currentMonth;
   }
 
   /**
