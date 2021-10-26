@@ -1,6 +1,8 @@
 package gse.employee;
 
 /**
+ * Interface representing an Employee.
+ *
  * @author Marvin Simon
  */
 public interface IEmployee {
