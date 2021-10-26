@@ -13,6 +13,13 @@ public interface IEmployee {
   int MONTHLY_WORKING_TIME = WEEKLY_WORKING_TIME * WEEKS_IN_A_MONTH; //Hours per Month
 
   /**
+   * Getter for the surname.
+   *
+   * @return Surname of the employee
+   */
+  String getSurname();
+
+  /**
    * Getter for the forename.
    *
    * @return Forename of the employee
@@ -27,11 +34,11 @@ public interface IEmployee {
   float getYearlySalaryToThisDate();
 
   /**
-   * Getter for the surname.
+   * Returns the contract of the worker.
    *
-   * @return Surname of the employee
+   * @return The contract type of the worker.
    */
-  String getSurname();
+  ContractTypeT getContract();
 
   /**
    * Method to calculate the salary.
@@ -39,13 +46,6 @@ public interface IEmployee {
    * @return The calculated salary
    */
   float calculateSalary();
-
-  /**
-   * Returns the contract of the worker.
-   *
-   * @return The contract type of the worker.
-   */
-  ContractTypeT getContract();
 
   /**
    * Return the fore and surname of the employee and his class name.

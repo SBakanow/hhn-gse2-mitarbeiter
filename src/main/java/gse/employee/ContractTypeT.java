@@ -1,5 +1,8 @@
 package gse.employee;
 
+/**
+ * Enum class for the different contract types a worker can have.
+ */
 public enum ContractTypeT {
   TimeDependent("Time Contract"),
   Tariff("Tariff Contract"),

@@ -1,6 +1,8 @@
 package gse.employee;
 
 /**
+ * Interface representing a Taxpayer.
+ *
  * @author Marvin Simon
  */
 public interface ITaxpayer {

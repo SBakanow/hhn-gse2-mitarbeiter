@@ -25,7 +25,7 @@ public class SalariedEmployee extends Employee {
    * @param surname        the surname of the worker.
    * @param monthlySalary  the monthly Salary the worker receives.
    * @param overtimeTariff the overtime tariff the worker gets per hour.
-   * @param contract       the contract type of the worker
+   * @param contract       the contract type of the worker.
    */
   public SalariedEmployee(String forename, String surname, float monthlySalary,
                           float overtimeTariff, ContractTypeT contract) {

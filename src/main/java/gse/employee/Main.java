@@ -1,6 +1,8 @@
 package gse.employee;
 
 /**
+ * Executing class for the inheritance hierarchy project.
+ *
  * @author Marvin Simon
  */
 public class Main {
@@ -50,9 +52,12 @@ public class Main {
       }
 
       System.out.println("Yearly Salary to this date: ");
-      System.out.println(sergej + " Yearly Salary to this Date: " + sergej.getYearlySalaryToThisDate() + "€");
-      System.out.println(dennis + " Yearly Salary to this Date: " + dennis.getYearlySalaryToThisDate() + "€");
-      System.out.println(noah + " Yearly Salary to this Date: " + noah.getYearlySalaryToThisDate() + "€");
+      System.out.println(
+          sergej + " Yearly Salary to this Date: " + sergej.getYearlySalaryToThisDate() + "€");
+      System.out.println(
+          dennis + " Yearly Salary to this Date: " + dennis.getYearlySalaryToThisDate() + "€");
+      System.out.println(
+          noah + " Yearly Salary to this Date: " + noah.getYearlySalaryToThisDate() + "€");
 
       System.out.println("---------------------");
       System.out.println();
@@ -69,14 +74,17 @@ public class Main {
 
       System.out.println();
 
-      System.out.println(sergej + " Yearly Salary to this Date: " + sergej.getYearlySalaryToThisDate() + "€");
-      System.out.println(dennis + " Yearly Salary to this Date: " + dennis.getYearlySalaryToThisDate() + "€");
-      System.out.println(noah + " Yearly Salary to this Date: " + noah.getYearlySalaryToThisDate() + "€");
+      System.out.println(
+          sergej + " Yearly Salary to this Date: " + sergej.getYearlySalaryToThisDate() + "€");
+      System.out.println(
+          dennis + " Yearly Salary to this Date: " + dennis.getYearlySalaryToThisDate() + "€");
+      System.out.println(
+          noah + " Yearly Salary to this Date: " + noah.getYearlySalaryToThisDate() + "€");
 
       System.out.println();
       System.out.println("Actual Income taxes: ");
       System.out.println(sergej + ": " + sergej.actualIncomeTax() + "€");
-      System.out.println(dennis +": " + dennis.actualIncomeTax() + "€");
+      System.out.println(dennis + ": " + dennis.actualIncomeTax() + "€");
       System.out.println(noah + ": " + noah.actualIncomeTax() + "€");
 
       System.out.println();

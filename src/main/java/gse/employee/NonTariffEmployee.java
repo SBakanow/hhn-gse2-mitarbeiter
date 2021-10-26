@@ -1,7 +1,7 @@
 package gse.employee;
 
 /**
- * Extends Employee class
+ * Extends Employee class.
  *
  * @author Dennis Schneider
  */
@@ -10,7 +10,14 @@ public class NonTariffEmployee extends Employee {
 
   private float monthlySalary;
 
-
+  /**
+   * Constructor of the NonTariffEmployee class.
+   *
+   * @param forename      the first name of the worker.
+   * @param surname       the surname of the worker.
+   * @param monthlySalary the monthly Salary the worker receives.
+   * @param contractType  the contract type of the worker
+   */
   public NonTariffEmployee(String forename, String surname, float monthlySalary,
                            ContractTypeT contractType) {
     super(forename, surname, contractType);
