@@ -37,6 +37,16 @@ public class TemporaryWorker extends Employee {
     this.hoursWorked = 0;
   }
 
+  @Override
+  public String getForename() {
+    return forename;
+  }
+
+  @Override
+  public String getSurname() {
+    return surname;
+  }
+
   /**
    * Return the fixed wage per hour.
    *
