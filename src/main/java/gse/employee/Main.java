@@ -1,5 +1,8 @@
 package gse.employee;
 
+/**
+ * @author Marvin Simon
+ */
 public class Main {
 
   /**
@@ -84,7 +87,7 @@ public class Main {
       System.out.println(noah + ": " + noah.anticipatedIncomeTax() + "€");
 
     } catch (IllegalArgumentException ex) {
-      ex.printStackTrace();
+      System.err.println(ex.getMessage());
     }
   }
 }
